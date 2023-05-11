@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 73px;
+  background-color: #66ab59;
+}
+#header #logo {
+  width: 59px;
+  height: 100%;
+  margin-top: 7px;
+  margin-left: 7.5%;
+}
+#header #cart-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50%;
+  margin-right: 11%;
+}
+#header #cart-wrapper #account-button {
+  color: white;
+  padding-right: 15px;
+  border-right: 2px solid white;
+}
+#header #cart-wrapper #account-button p {
+  margin-top: 7px;
+}
+#header #cart-wrapper #account-button p a {
+  color: white;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px dashed white;
+}
+#header #cart-wrapper #cart {
+  width: 17px;
+  height: 17px;
+  margin-top: 5px;
+  margin-left: 11px;
+}
+#header #cart-wrapper #cart #product-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  z-index: 2;
+  margin-top: -199%;
+  margin-left: 110%;
+  border-radius: 50%;
+  background-color: white;
+}
+#header #cart-wrapper #cart #product-count p {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #66ab59;
+  font-size: 12px;
+}
+
+.forms-wrapper {
+  margin-top: 57px;
+  height: 57.5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.forms-wrapper .login {
+  width: 50%;
+  height: 100%;
+  padding-left: 37px;
+  border-right: 3px solid #bbbbbb;
+}
+.forms-wrapper .login h1 {
+  font-weight: 500;
+}
+.forms-wrapper .login h4 {
+  font-weight: 500;
+}
+.forms-wrapper .login .log-in-err {
+  display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 95%;
+  height: 57px;
+  margin-top: 27px;
+  background-color: #efdfde;
+  border: 1px solid #ead6d7;
+  border-radius: 7px;
+}
+.forms-wrapper .login .log-in-err p {
+  color: #b37370;
+  font-weight: 500;
+  margin-top: 11px;
+  margin-left: 17px;
+}
+.forms-wrapper .login #input1 {
+  margin-top: 37px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .login #input2 {
+  margin-top: 17px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .login button {
+  width: 117px;
+  border-radius: 25px;
+  background-color: #d73a3d;
+  font-weight: 500;
+}
+.forms-wrapper .registration {
+  width: 50%;
+  height: 100%;
+  padding-left: 37px;
+}
+.forms-wrapper .registration h1 {
+  font-weight: 500;
+}
+.forms-wrapper .registration h4 {
+  font-weight: 500;
+}
+.forms-wrapper .registration .reg-in-err {
+  display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 95%;
+  height: 57px;
+  margin-top: 27px;
+  background-color: #efdfde;
+  border: 1px solid #ead6d7;
+  border-radius: 7px;
+}
+.forms-wrapper .registration .reg-in-err p {
+  color: #b37370;
+  font-weight: 500;
+  margin-top: 11px;
+  margin-left: 17px;
+}
+.forms-wrapper .registration #input3 {
+  margin-top: 37px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .registration #input4 {
+  margin-top: 17px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .registration #input5 {
+  margin-top: 17px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .registration #input6 {
+  margin-top: 17px;
+  border: 2px solid #a0a0a0;
+  width: 95%;
+  height: 47px;
+}
+.forms-wrapper .registration button {
+  width: 207px;
+  border-radius: 25px;
+  background-color: #d73a3d;
+  font-weight: 500;
+}
