@@ -87,7 +87,7 @@ let renderCart = (data) => {
         .addClass("total")
         .text("$" + priceValue);
 
-      input.on("input", function () {
+      input.on("blur", function () {
         let quantity = $(this).val();
         let price = obj.sale ? priceValue : obj.price;
         let newTotal = price * quantity;
@@ -143,7 +143,7 @@ let renderCart = (data) => {
         .addClass("total")
         .text("$" + this.price);
 
-      input.on("input", function () {
+      input.on("blur", function () {
         let quantity = $(this).val();
         let price = obj.sale ? priceValue : obj.price;
         let newTotal = price * quantity;
@@ -154,8 +154,8 @@ let renderCart = (data) => {
         });
         $(".sum-price").text("$" + sum);
 
-        const productId = $(obj).data("id");
-        const user = JSON.parse(localStorage.getItem("user"));
+        let productId = $(obj).data("id");
+        let user = JSON.parse(localStorage.getItem("user"));
 
         fetch(
           `https://6442d57333997d3ef91aa550.mockapi.io/api/mindboard/users/${user.id}`
@@ -174,7 +174,7 @@ let renderCart = (data) => {
                 headers: { "content-type": "application/json; charset=utf-8" },
                 body: JSON.stringify(res),
               }
-            );
+            ).then(res => res.json()).then(res => console.log(res))
           })
           .then(() => {
             updateProductCount();
@@ -238,44 +238,48 @@ let renderCart = (data) => {
 
     $(".table").append(productRow);
     $(".sum-price").text("$" + sum);
-
-    $('button[type="submit"]').on("click", async (e) => {
-      e.preventDefault();
-
-      let updateOrders = async (user) => {
-        $.each(user.shoppingCart, async function () {
-          const existingItem = user.orders.find((item) => item.id === this.id);
-          if (existingItem) {
-            existingItem.count += parseInt(input.val());
-          } else {
-            this.count = parseInt(input.val());
-            user.orders.push(this);
-          }
-
-          user.shoppingCart = [];
-
-          await fetch(
-            `https://6442d57333997d3ef91aa550.mockapi.io/api/mindboard/users/${user.id}`,
-            {
-              method: "PUT",
-              headers: { "content-type": "application/json; charset=utf-8" },
-              body: JSON.stringify(user),
-            }
-          )
-            .then((res) => res.json())
-            .then((res) => localStorage.setItem("user", JSON.stringify(res)));
-
-          window.location.href = "../html/account.html";
-        });
-      };
-
-      await fetch(
-        `https://6442d57333997d3ef91aa550.mockapi.io/api/mindboard/users/${user.id}`
-      )
-        .then((res) => res.json())
-        .then((res) => updateOrders(res));
-    });
   });
 };
 
 renderCart(user.shoppingCart);
+
+$('button[type="submit"]').on("click", async (e) => {
+  e.preventDefault();
+
+  let updateOrders = async (user) => {
+    $.each(user.shoppingCart, async function () {
+      const existingItem = user.orders.find((item) => item.id === this.id);
+      if (existingItem) {
+        existingItem.count += parseInt($(".quantity[data-id=" + this.id + "]").val());
+      } else {
+        this.count = parseInt($(".quantity[data-id=" + this.id + "]").val());
+        user.orders.push(this);
+      } 
+
+    });
+
+      user.shoppingCart = [];
+
+      await fetch(
+        `https://6442d57333997d3ef91aa550.mockapi.io/api/mindboard/users/${user.id}`,
+        {
+          method: "PUT",
+          headers: { "content-type": "application/json; charset=utf-8" },
+          body: JSON.stringify(user),
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => localStorage.setItem("user", JSON.stringify(res)))
+        .then(res => {
+          
+        window.location.href = "../html/account.html";
+
+        })
+  };
+
+  await fetch(
+    `https://6442d57333997d3ef91aa550.mockapi.io/api/mindboard/users/${user.id}`
+  )
+    .then((res) => res.json())
+    .then((res) => updateOrders(res));
+});
